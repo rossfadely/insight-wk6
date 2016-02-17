@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import os
+import os, string
 
 class SortList(object):
     """
@@ -18,6 +18,7 @@ class SortList(object):
         else:
             self.sort_list(line)
 
+        # write to file.
         self._write(output_path)
 
     def sort_list(self, line):
@@ -25,6 +26,15 @@ class SortList(object):
         Sort the line.
         """
         pass
+
+    def clean_string(self, line):
+        """
+        Remove all unwanted chrs.
+        """
+        all_ascii = ''.join([chr(i) for i in range(256)])
+        bad_ascii = all_ascii.translate(None, ''.join([string.ascii_letters,
+                                        string.digits, '-', ' ']))
+        return line.translate(None, bad_ascii)
 
     def _open(self, filepath):
         """
@@ -51,7 +61,6 @@ def check_args(args):
     assert len(args) == 3, m
 
     # check that input text file exists
-    assert args[2].split('/')[-1] == 'result.txt'
     assert os.path.isfile(args[1]), 'Input file not found.'
 
     # check output text path is valid
@@ -72,3 +81,4 @@ if __name__ == '__main__':
     input_path, output_path = check_args(sys.argv)
 
     sorter = SortList(input_path, output_path)
+    print sorter.clean_string('adbaoiha08 p98ays89p -1121 a;a; sle \'')
