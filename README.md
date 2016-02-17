@@ -1,1 +1,1 @@
-# insight_wk6
+# insight-wk6
