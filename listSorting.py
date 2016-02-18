@@ -43,7 +43,7 @@ class SortList(object):
         self.result = self.gather_sorted(*parsed)
 
     def clean_string(self, line):
-        """Remove all unwanted characters.
+        """Remove all unwanted characters except dashes.
 
         Args:
             line (str): String read in from text file.
@@ -78,8 +78,11 @@ class SortList(object):
         int_arr = []
         type_ind = {}
         for i, l in enumerate(line):
+            # handle dashes, save a leading dash for ints
             first = l[0]
             l = l.translate(None, '-')
+
+            # check if int or word like
             if l[0] in int_chrs:
                 if first == '-':
                     l = '-' + l
@@ -89,7 +92,7 @@ class SortList(object):
                 str_arr.append(l)
                 type_ind[i] = 'str'
 
-        return (line, sorted(int_arr), sorted(str_arr), type_ind)
+        return (line, sorted(int_arr), sorted(str_arr key=str.lower), type_ind)
 
     def gather_sorted(self, line, int_arr, str_arr, type_ind):
         """Take the results and place sorted arrays in correct order, return the
