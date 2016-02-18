@@ -39,7 +39,7 @@ def string_gen(N=100, frac_str=0.5, bad_tol=0.33, max_str_len=20,
 
     # sort
     sorted_int = sorted(int_arr)
-    sorted_str = sorted(str_arr)
+    sorted_str = sorted(str_arr, key=str.lower)
 
     # make target and test strings
     target, test = [], []

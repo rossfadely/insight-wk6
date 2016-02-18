@@ -92,7 +92,7 @@ class SortList(object):
                 str_arr.append(l)
                 type_ind[i] = 'str'
 
-        return (line, sorted(int_arr), sorted(str_arr key=str.lower), type_ind)
+        return (line, sorted(int_arr), sorted(str_arr, key=str.lower), type_ind)
 
     def gather_sorted(self, line, int_arr, str_arr, type_ind):
         """Take the results and place sorted arrays in correct order, return the
