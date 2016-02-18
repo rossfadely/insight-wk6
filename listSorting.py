@@ -1,5 +1,7 @@
 #!/usr/bin/env python
-import os, string
+import os
+import string
+
 
 class SortList(object):
     """Class to solve week 6 code challenge.
@@ -133,6 +135,7 @@ class SortList(object):
         f.write(self.result)
         f.close()
 
+
 def check_args(args):
     """Check command line arguments specify valid paths.
 
@@ -144,7 +147,7 @@ def check_args(args):
         (str): Checked path for output.
     """
     # check that correct number of args are given
-    m = '\n\nPlease specify a path for both the input and results file. \nCall '
+    m = '\nPlease specify a path for both the input and results file. \nCall '
     m += 'should look like:\n ./listSorting.py <path-to-input-file>/list.txt'
     m += '<path-to-output-file>/result.txt'
     assert len(args) == 3, m

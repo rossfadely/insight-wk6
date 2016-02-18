@@ -47,7 +47,7 @@ def string_gen(N=100, frac_str=0.5, bad_tol=0.33, max_str_len=20,
     int_count, str_count = 0, 0
     for i in range(N):
         if (((np.random.rand() < 0.5) & (int_count < Nint)) |
-            (str_count == Nstr)):
+                (str_count == Nstr)):
             targ_add = str(sorted_int[int_count])
             test_add = str(int_arr[int_count])
             type_ind[i] = 'int'
