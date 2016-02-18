@@ -76,7 +76,11 @@ class SortList(object):
         int_arr = []
         type_ind = {}
         for i, l in enumerate(line):
+            first = l[0]
+            l = l.translate(None, '-')
             if l[0] in int_chrs:
+                if first == '-':
+                    l = '-' + l
                 int_arr.append(int(l))
                 type_ind[i] = 'int'
             else:
